@@ -1,0 +1,75 @@
+:root {
+  --bg: #0f1419;
+  --card: #1a2332;
+  --text: #e6edf3;
+  --muted: #8b9cb3;
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --border: #2d3a4d;
+  --input-bg: #0d1117;
+  --success: #10b981;
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+body {
+  min-height: 100vh;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: radial-gradient(1200px 600px at 20% -10%, #1e3a5f 0%, transparent 50%), var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.page { max-width: 640px; margin: 2rem auto; padding: 0 1.5rem; }
+
+.header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 0; margin-bottom: 2rem; border-bottom: 1px solid var(--border);
+}
+.brand { font-weight: 700; font-size: 1.125rem; color: var(--accent); }
+.nav { display: flex; gap: 1.25rem; }
+.nav a { color: var(--muted); text-decoration: none; font-size: 0.875rem; transition: color .15s; }
+.nav a:hover, .nav a.active { color: var(--text); }
+
+.hero { text-align: center; margin-bottom: 2rem; }
+.hero h1 { font-size: 1.75rem; letter-spacing: -0.02em; margin-bottom: .25rem; }
+.muted { color: var(--muted); font-size: 0.875rem; }
+.optional { font-weight: 400; color: var(--muted); font-size: 0.75rem; }
+
+.booking-form {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 1.75rem; display: flex; flex-direction: column; gap: 1.25rem;
+  box-shadow: 0 24px 48px rgba(0,0,0,.35);
+}
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: .35rem; }
+.form-group label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+
+input, select, textarea {
+  background: var(--input-bg); border: 1px solid var(--border); border-radius: 8px;
+  color: var(--text); padding: .6rem .75rem; font-size: .875rem; font-family: inherit;
+  outline: none; transition: border-color .15s;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+textarea { resize: vertical; }
+
+.btn-primary {
+  background: var(--accent); color: #fff; border: none; border-radius: 8px;
+  padding: .75rem 1.5rem; font-size: .9rem; font-weight: 600; cursor: pointer;
+  transition: background .15s;
+}
+.btn-primary:hover { background: var(--accent-hover); }
+
+.success {
+  display: flex; flex-direction: column; align-items: center; gap: .5rem;
+  text-align: center; padding: 3rem 1rem;
+}
+.success-icon {
+  width: 56px; height: 56px; border-radius: 50%; background: var(--success);
+  color: #fff; font-size: 1.75rem; display: flex; align-items: center; justify-content: center;
+  margin-bottom: .5rem;
+}
+.success h2 { font-size: 1.25rem; }
+
+.footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); text-align: center; }
