@@ -3,83 +3,176 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Booking · VA Studio</title>
+  <title>Book a consultation — Northwind Advisory</title>
+  <meta name="description" content="Schedule a confidential consultation with a Northwind advisor." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="page">
-    <header class="header">
-      <div class="brand">BookNow</div>
-      <nav class="nav">
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 20V4h4l8 12V4h4v16h-4L8 8v12H4z" fill="currentColor"/></svg>
+        </span>
+        <span class="brand-name">Northwind Advisory</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
         <a href="#" class="active">Book</a>
-        <a href="#">My Bookings</a>
+        <a href="#">My bookings</a>
+        <a href="#">Services</a>
         <a href="#">Help</a>
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <section class="hero">
-      <h1>Book Your Appointment</h1>
-      <p class="muted">Select a service, pick a time, and confirm in seconds.</p>
+  <main class="container booking-shell">
+    <section class="booking-intro">
+      <div class="booking-visual">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80&auto=format&fit=crop" alt="Two advisors reviewing a plan at a conference table" />
+        <div class="visual-card">
+          <div class="card-row">
+            <div class="advisor-stack">
+              <img src="https://i.pravatar.cc/80?img=15" alt="" />
+              <img src="https://i.pravatar.cc/80?img=32" alt="" />
+              <img src="https://i.pravatar.cc/80?img=47" alt="" />
+            </div>
+            <div>
+              <div class="card-title">12 senior advisors available</div>
+              <div class="card-sub">Average response: &lt; 2 hours</div>
+            </div>
+          </div>
+          <div class="rating-row">
+            <div class="stars" aria-hidden="true">★★★★★</div>
+            <span class="rating-text"><strong>4.9</strong> from 1,840+ sessions</span>
+          </div>
+        </div>
+      </div>
+      <div class="booking-copy">
+        <span class="eyebrow">Private consultation</span>
+        <h1>Book a 1:1 with a senior advisor.</h1>
+        <p class="lead">Talk through your roadmap, growth plan, or board prep with a specialist who has been in your seat. All sessions are confidential and recorded only with your consent.</p>
+        <ul class="perks">
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Matched with an advisor in your industry
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Structured agenda shared 24 hours ahead
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Follow-up memo within 48 hours
+          </li>
+        </ul>
+      </div>
     </section>
 
-    <form class="booking-form" onsubmit="event.preventDefault(); document.querySelector('.success').style.display='flex'">
-      <div class="form-group">
-        <label>Service</label>
-        <select>
-          <option value="">Choose a service…</option>
-          <option>Consultation (30 min)</option>
-          <option>Strategy Session (60 min)</option>
-          <option>Workshop (2 hours)</option>
-          <option>Full Day Training</option>
-        </select>
-      </div>
+    <section class="booking-form-card">
+      <header class="card-head">
+        <h2>Schedule your session</h2>
+        <p class="muted">Pick a service and time — we'll confirm within 2 hours.</p>
+      </header>
 
-      <div class="form-row">
-        <div class="form-group">
-          <label>Date</label>
-          <input type="date" value="2026-04-10" />
-        </div>
-        <div class="form-group">
-          <label>Time</label>
-          <select>
-            <option>09:00 AM</option>
-            <option>10:00 AM</option>
-            <option selected>11:00 AM</option>
-            <option>01:00 PM</option>
-            <option>02:00 PM</option>
-            <option>03:00 PM</option>
+      <form class="booking-form" id="bookingForm" novalidate>
+        <div class="field">
+          <label for="service">Service</label>
+          <select id="service" required>
+            <option value="">Choose a service…</option>
+            <option>Strategy Consultation — 30 min · Free</option>
+            <option>Advisory Session — 60 min · $245</option>
+            <option>Board Prep Workshop — 90 min · $450</option>
+            <option>Full-Day Offsite — 6 hours · Custom quote</option>
           </select>
         </div>
-      </div>
 
-      <div class="form-row">
-        <div class="form-group">
-          <label>Full Name</label>
-          <input type="text" placeholder="John Doe" />
+        <div class="field">
+          <label>Date</label>
+          <div class="date-strip" role="radiogroup" aria-label="Pick a date">
+            <label class="date-pill"><input type="radio" name="date" /> <span class="d-dow">Mon</span><span class="d-day">21</span><span class="d-mo">Apr</span></label>
+            <label class="date-pill active"><input type="radio" name="date" checked /> <span class="d-dow">Tue</span><span class="d-day">22</span><span class="d-mo">Apr</span></label>
+            <label class="date-pill"><input type="radio" name="date" /> <span class="d-dow">Wed</span><span class="d-day">23</span><span class="d-mo">Apr</span></label>
+            <label class="date-pill"><input type="radio" name="date" /> <span class="d-dow">Thu</span><span class="d-day">24</span><span class="d-mo">Apr</span></label>
+            <label class="date-pill"><input type="radio" name="date" /> <span class="d-dow">Fri</span><span class="d-day">25</span><span class="d-mo">Apr</span></label>
+            <label class="date-pill disabled"><input type="radio" name="date" disabled /> <span class="d-dow">Sat</span><span class="d-day">26</span><span class="d-mo">Apr</span></label>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" placeholder="john@example.com" />
+
+        <div class="field">
+          <label>Time <span class="muted tz">(America/New_York)</span></label>
+          <div class="time-grid">
+            <label class="time-pill"><input type="radio" name="time" /> 9:00 AM</label>
+            <label class="time-pill"><input type="radio" name="time" /> 10:00 AM</label>
+            <label class="time-pill active"><input type="radio" name="time" checked /> 11:00 AM</label>
+            <label class="time-pill"><input type="radio" name="time" /> 1:00 PM</label>
+            <label class="time-pill"><input type="radio" name="time" /> 2:30 PM</label>
+            <label class="time-pill"><input type="radio" name="time" /> 4:00 PM</label>
+          </div>
         </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Full name</label>
+            <input id="name" type="text" placeholder="Ada Lovelace" required />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="ada@company.com" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="notes">What would you like to cover? <span class="muted">(optional)</span></label>
+          <textarea id="notes" rows="3" placeholder="Share any context, goals, or questions for your advisor."></textarea>
+        </div>
+
+        <footer class="form-foot">
+          <div class="summary">
+            <div class="summary-row"><span>Service</span><strong>Strategy Consultation</strong></div>
+            <div class="summary-row"><span>When</span><strong>Tue 22 Apr · 11:00 AM EST</strong></div>
+            <div class="summary-row total"><span>Total</span><strong>Complimentary</strong></div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg">
+            Confirm booking
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </footer>
+      </form>
+
+      <div class="success" hidden>
+        <div class="success-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Booking confirmed</h3>
+        <p class="muted">A calendar invite has been sent to your inbox. Your advisor will reach out 24 hours before the session.</p>
+        <a href="#" class="link">Manage your booking →</a>
       </div>
+    </section>
 
-      <div class="form-group">
-        <label>Notes <span class="optional">(optional)</span></label>
-        <textarea rows="3" placeholder="Anything we should know before the meeting…"></textarea>
-      </div>
-
-      <button type="submit" class="btn-primary">Confirm Booking</button>
-    </form>
-
-    <div class="success" style="display:none">
-      <div class="success-icon">✓</div>
-      <h2>Booking Confirmed!</h2>
-      <p class="muted">A confirmation email has been sent. You can manage your booking from the dashboard.</p>
-    </div>
-
-    <footer class="footer muted">
-      <p>Edit this template in VA Studio — preview updates live.</p>
+    <footer class="site-foot muted">
+      <p>© 2026 Northwind Advisory · All consultations are confidential and covered by a mutual NDA.</p>
     </footer>
   </main>
+
+  <script>
+    // Date / time pill selection
+    document.querySelectorAll('.date-strip .date-pill, .time-grid .time-pill').forEach(el => {
+      el.addEventListener('click', () => {
+        const group = el.classList.contains('date-pill') ? '.date-pill' : '.time-pill';
+        document.querySelectorAll(group).forEach(p => p.classList.remove('active'));
+        if (!el.classList.contains('disabled')) el.classList.add('active');
+      });
+    });
+
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      this.hidden = true;
+      document.querySelector('.card-head').hidden = true;
+      document.querySelector('.success').hidden = false;
+    });
+  </script>
 </body>
 </html>
